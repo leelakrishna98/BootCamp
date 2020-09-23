@@ -1,5 +1,6 @@
 package com.capg.otms.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
@@ -73,16 +74,34 @@ public class TestRestController {
 	 */
 	
 	
+	
 	/*
-	 * @GetMapping("/create") public TestBean fetchProuctById(@PathVariable int id)
-	 * { return service.fetchProductById(id).get(); }
+	 * @GetMapping("/getTestById/{id}") public TestBean fetchTestById(@PathVariable
+	 * int id) { return service.fetchTestById(id).get(); }
 	 */
+	 
+	@PostMapping("/addtest")
+	public TestBean saveTest(@RequestBody TestBean testbean) {
+		return service.addTest(testbean);
+	}
+	
+	@GetMapping("/gettestlist")
+	public List<TestBean> fetchTestList(){
+		List<TestBean> testbean=new ArrayList<TestBean>();
+		testbean=service.getAllTests();
+		return testbean;
+	}
+	
+	@GetMapping("/deletetestbyid/{id}")
+	public void deleteTestById(@PathVariable int id) {
+		        service.removeTest(id);
+	}
 	 
 	
 	
-	@GetMapping("/fetchtests")
-	public List<TestBean> fetchtests() {
-		return service.getAllTests();
-	} 
+	/*
+	 * @GetMapping("/fetchtests") public List<TestBean> fetchtests() { return
+	 * service.getAllTests(); }
+	 */ 
 	
 }
