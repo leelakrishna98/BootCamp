@@ -21,22 +21,25 @@ public class TestServiceImpl implements ITestService {
 	
 	public TestBean addTest(TestBean testbean)
 	{
+	//	if(TestRepo.existsById(testbean.getId())) {
+	//		throw new RuntimeException("Test Already Exists");
+	//	}
+	//	return questionRepo.save(question);
 		return repo.save(testbean);
 	}
 	
-	/*
-	 * public Optional<TestBean> fetchProductById(int id) { return
-	 * repo.findById(id); }
-	 */
 	
+	public String removeTest(int id) {
 	
-	public void removeTest(int id) {
-	
+		String result;
 		try {
 		repo.deleteById(id);
+		result="successfully deleted";
 		}
 		catch(Exception e) {
+			result="test with id not deleted";
 		}
+		return result;
 	}
 	
 }

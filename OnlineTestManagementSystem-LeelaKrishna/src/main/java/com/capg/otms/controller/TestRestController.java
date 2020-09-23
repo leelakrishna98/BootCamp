@@ -65,20 +65,6 @@ public class TestRestController {
 		  return e.getMessage();
 	  }
 	
-	/*
-	 * @GetMapping("/getproductbyid/{id}") public TestBean
-	 * fetchProuctById(@PathVariable int id) { return
-	 * service.fetchProductById(id).get();
-	 * 
-	 * }
-	 */
-	
-	
-	
-	/*
-	 * @GetMapping("/getTestById/{id}") public TestBean fetchTestById(@PathVariable
-	 * int id) { return service.fetchTestById(id).get(); }
-	 */
 	 
 	@PostMapping("/addtest")
 	public TestBean saveTest(@RequestBody TestBean testbean) {
@@ -93,8 +79,8 @@ public class TestRestController {
 	}
 	
 	@GetMapping("/deletetestbyid/{id}")
-	public void deleteTestById(@PathVariable int id) {
-		        service.removeTest(id);
+	public String deleteTestById(@PathVariable int id) {
+		      return  service.removeTest(id);
 	}
 	 
 	
